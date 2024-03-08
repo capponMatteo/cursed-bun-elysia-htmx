@@ -2,22 +2,23 @@ import { Elysia, t } from "elysia";
 import { staticPlugin } from "@elysiajs/static";
 import { html } from "@elysiajs/html";
 import chalk from "chalk";
+import { randomUUID } from "crypto";
 
 const elysia = new Elysia();
 
 type Todo = {
-  id: number;
+  id: string;
   text: string;
   done: boolean;
   priority: number;
 };
 
 let todos: Todo[] = [
-  { id: 1, text: "Shed the dog 🐕", done: false, priority: 7 },
-  { id: 2, text: "Walk the turtle 🐢", done: false, priority: 1 },
-  { id: 3, text: "Clean the hats 🎩", done: true, priority: 3 },
-  { id: 4, text: "Fly to the moon 🌑", done: false, priority: 4 },
-  { id: 5, text: "Get vaccinated 💉", done: false, priority: 1 },
+  { id: randomUUID(), text: "Shed the dog 🐕", done: false, priority: 7 },
+  { id: randomUUID(), text: "Walk the turtle 🐢", done: false, priority: 1 },
+  { id: randomUUID(), text: "Clean the hats 🎩", done: true, priority: 3 },
+  { id: randomUUID(), text: "Fly to the moon 🌑", done: false, priority: 4 },
+  { id: randomUUID(), text: "Get vaccinated 💉", done: false, priority: 1 },
 ];
 
 const TodoComponent = (todo: Todo) => (
@@ -78,7 +79,7 @@ elysia
     "/todo/:id",
     (context) => {
       const isOn = context.body.done === "on";
-      const id = Number(context.params.id);
+      const id = context.params.id;
       const todo = todos.find((todo) => todo.id === id);
       if (todo) {
         todo.done = isOn;
@@ -98,9 +99,8 @@ elysia
   .post(
     "/todo",
     (context) => {
-      console.log(context);
       const text = context.body.text;
-      const id = todos.length + 1;
+      const id = randomUUID();
       todos.push({ id, text, done: false, priority: 5 });
       return TodoList(todos);
     },
@@ -111,7 +111,7 @@ elysia
     }
   )
   .delete("/todo/:id", (context) => {
-    const id = Number(context.params.id);
+    const id = context.params.id;
     todos = todos.filter((todo) => todo.id !== id);
     return TodoList(todos);
   })
