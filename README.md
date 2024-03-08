@@ -1,4 +1,4 @@
-# htmx-alpine-testini
+# htmx-bun-elysia-testini
 
 To install dependencies:
 
