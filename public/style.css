@@ -1,0 +1,45 @@
+.todos {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.todo {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  border: 1px solid;
+  border-radius: 6px;
+  padding: 10px;
+
+  width: 300px;
+  margin-bottom: 15px;
+}
+
+.todo button {
+  font-family: "Madimi One", sans-serif;
+  font-size: .8rem;
+  background: crimson;
+  border: none;
+  border-radius: 6px;
+  margin-left: 10px;
+  color: white;
+  width: 60px;
+  height: 40px;
+  cursor: pointer;
+}
+
+.todo span.done {
+  text-decoration: line-through;
+}
+
+body {
+  font-family: "Madimi One", sans-serif;
+  font-style: normal;
+}
+
+input {
+  transform: scale(1.5);
+}
