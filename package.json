@@ -11,6 +11,7 @@
   "dependencies": {
     "@elysiajs/html": "^0.8.0",
     "@elysiajs/static": "^0.8.1",
+    "chalk": "^5.3.0",
     "elysia": "^0.8.17"
   },
   "scripts": {

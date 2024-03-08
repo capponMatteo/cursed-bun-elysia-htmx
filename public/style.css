@@ -10,36 +10,77 @@
   justify-content: space-between;
   align-items: center;
 
+  background: rgba(207, 204, 204, 0.239);
+
   border: 1px solid;
   border-radius: 6px;
-  padding: 10px;
+  padding: 15px;
 
-  width: 300px;
+  max-width: 300px;
+
   margin-bottom: 15px;
+  min-width: 400px;
+
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
 }
 
-.todo button {
+.todo .deleteButton {
   font-family: "Madimi One", sans-serif;
   font-size: .8rem;
-  background: crimson;
+  background: rgb(254, 41, 84);
   border: none;
   border-radius: 6px;
-  margin-left: 10px;
   color: white;
   width: 60px;
-  height: 40px;
+  height: 30px;
   cursor: pointer;
+  border: 1px solid rgb(92, 0, 18);
 }
 
-.todo span.done {
+#new-todo-text {
+  text-align: left;
+}
+
+.todo .createButton {
+  font-family: "Madimi One", sans-serif;
+  font-size: .8rem;
+  background: rgb(104, 172, 35);
+  border: none;
+  border-radius: 6px;
+  color: white;
+  width: 60px;
+  height: 30px;
+  cursor: pointer;
+  border: 1px solid rgb(0, 92, 0);
+}
+
+.todo input.done {
   text-decoration: line-through;
 }
 
 body {
   font-family: "Madimi One", sans-serif;
+  font-size: 1.2rem;
   font-style: normal;
 }
 
-input {
-  transform: scale(1.5);
+input[type="text"] {
+  border-radius: 6px;
+  border: 1px solid rgba(69, 69, 69, 0.323);
+  background: rgb(255, 255, 255);
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  text-align: center;
+  color: inherit;
+  outline: none;
+  width: 100%; /* Added this line */
+  margin: 12px;
 }
+
+input[type="checkbox"] {
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+}
+
