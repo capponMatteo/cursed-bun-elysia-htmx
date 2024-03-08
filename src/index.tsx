@@ -78,16 +78,18 @@ elysia
   .patch(
     "/todo/:id",
     (context) => {
-      const isOn = context.body.done === "on";
+      const { "hx-trigger-name": field } = context.headers;
       const id = context.params.id;
       const todo = todos.find((todo) => todo.id === id);
-      if (todo) {
-        todo.done = isOn;
-        if (context.body.text) {
-          todo.text = context.body.text;
-        }
-        return TodoComponent(todo);
+      if (!todo) {
+        throw new Error("Todo not found");
       }
+      if (field === "done") {
+        todo.done = !todo.done;
+      } else if (field === "text") {
+        todo.text = context.body.text ?? "";
+      }
+      return TodoComponent(todo)
     },
     {
       body: t.Object({
@@ -115,4 +117,6 @@ elysia
     todos = todos.filter((todo) => todo.id !== id);
     return TodoList(todos);
   })
-  .listen(3000, () => console.log(chalk.green("🚀 App running on http://localhost:3000")));
+  .listen(3000, () =>
+    console.log(chalk.green("🚀 App running on http://localhost:3000"))
+  );
